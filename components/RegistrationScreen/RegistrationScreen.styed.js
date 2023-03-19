@@ -1,6 +1,10 @@
 import styled from "styled-components/native";
-//import { StyleSheet, Text, View } from 'react-native';
-import { Content } from "../LoginScreen/LoginScreen.styled";
+
+import { Content, Title} from "../LoginScreen/LoginScreen.styled";
 export const ContentREgister = styled(Content)`
-    height: 70%;
+    height: ${(p) =>
+      p.myHeight === "shown" ? `85%` : `85%`};;
+`
+export const RegTitle = styled(Title)`
+    margin-top: 92px;
 `

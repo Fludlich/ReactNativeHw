@@ -16,7 +16,7 @@ import { useState } from "react";
 import { Btn, BtnText } from "../../App.styled";
 
 
-export const LoginScreen = ({ onRegister }) => {
+export const LoginScreen = ({ onRegister, keyboardShown }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [passwordShown, setPasswordShown] = useState(false)
@@ -34,13 +34,14 @@ const submitForm = () =>{
 
   return (
     <TouchableWithoutFeedback onPress={handleTouchOutside}>
-      <Content>
-        <Title>Login</Title>
-        <KeyboardAvoidingView
-        // behavior="padding" enabled={true}
+         <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={{width: "100%"}}>
+        style={{width: "100%", justifyContent: "flex-end"}}>
+      <Content myHeight={keyboardShown? "shown": "hiden"}>
+        <Title>Login</Title>
+
         <Form>
+     
           <Input
             style = { isFocused === "email" && {backgroundColor: "#fff", borderColor: "#FF6C00" }}
             value = {email}
@@ -80,11 +81,13 @@ const submitForm = () =>{
         </SubmitText>
       </ButtonSubmit>
         </Form>
-        </KeyboardAvoidingView>
+  
+
         <LinkToREgister onPress={onRegister}>
           <RegisterTExt>Don't have account yet? Register</RegisterTExt>
         </LinkToREgister>
       </Content>
+      </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 };

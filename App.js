@@ -20,20 +20,20 @@ export default function App() {
   });
   const [login, setLogin] = useState(false);
   const [registration, setRegistration] = useState(false);
-  // const [keyboardStatus, setKeyboardStatus] = useState("");
+  const [keyboardStatus, setKeyboardStatus] = useState("");
 
-  // useEffect(() => {
-  //   const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
-  //     setKeyboardStatus(true);
-  //   });
-  //   const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
-  //     setKeyboardStatus(false);
-  //   });
-  //   return () => {
-  //     showSubscription.remove();
-  //     hideSubscription.remove();
-  //   };
-  // }, [keyboardStatus]);
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+      setKeyboardStatus(true);
+    });
+    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+      setKeyboardStatus(false);
+    });
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, [keyboardStatus]);
 
 
   const changeScreen = () => {
@@ -72,11 +72,13 @@ export default function App() {
         {login && (
           <LoginScreen
             onRegister={changeScreen}
+            keyboardShown = {keyboardStatus}
           ></LoginScreen>
         )}
         {registration && (
           <RegistrationScreen
             onRegister={changeScreen}
+            keyboardShown = {keyboardStatus}
           ></RegistrationScreen>
         )}
       </Background>

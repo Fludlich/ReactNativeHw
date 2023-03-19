@@ -20,7 +20,8 @@ export const Background = styled.ImageBackground`
 
 export const Content = styled.View`
    background-color: #fff;
-   height: 60%;
+   /* height: 489px; */
+   height: 80%;
    border-top-left-radius: 25px ;
    border-top-right-radius: 25px ;
   /* // border-radius: 25px 25px 0px 0px; */
@@ -28,6 +29,8 @@ export const Content = styled.View`
    /* position: relative; */
    padding: 32px 16px 0 16px;
  //  gap: 32px;
+ height: ${(p) =>
+      p.myHeight === "shown" ? `60%` : `80%`};;
 `
 
 export const Title = styled.Text`
@@ -48,7 +51,7 @@ export const Input = styled.TextInput`
     color: "black";
     font-size: 16px;
     width: 100%;
-    padding: 10px 10px;
+    padding: 16px 15px;
     border-radius: 10px;
     font-weight: 400;
     background-color: #F6F6F6;

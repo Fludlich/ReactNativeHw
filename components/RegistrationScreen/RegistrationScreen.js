@@ -1,9 +1,8 @@
-import { View, Keyboard, TouchableWithoutFeedback } from "react-native";
+import { View, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Platform } from "react-native";
 import {
   Title,
   Input,
   Form,
-  BackBtnBox,
   ShowPassword,
   PasswordText,
   ButtonSubmit,
@@ -11,12 +10,10 @@ import {
   LinkToREgister,
   RegisterTExt
 } from "../LoginScreen/LoginScreen.styled";
-import { ContentREgister } from "./RegistrationScreen.styed";
-import { useState, useEffect, useRef } from "react";
-import { Btn, BtnText } from "../../App.styled";
+import { ContentREgister, RegTitle } from "./RegistrationScreen.styed";
+import { useState, useRef } from "react";
 
-
-export const RegistrationScreen = ({ onRegister }) => {
+export const RegistrationScreen = ({ onRegister, keyboardShown }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [login, setLogin] = useState("");
@@ -57,9 +54,12 @@ const submitForm = () =>{
 
   return (
     <TouchableWithoutFeedback onPress={handleTouchOutside}>
-      <ContentREgister>
-        <Title>Registration</Title>
-   
+           <KeyboardAvoidingView
+        // behavior="padding" enabled={true}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{width: "100%", justifyContent: "flex-end"}}>
+      <ContentREgister  myHeight={keyboardShown? "shown": "hiden"}>
+        <RegTitle>Registration</RegTitle>
         <Form> 
             <Input
            // ref={inputRef}
@@ -70,7 +70,7 @@ const submitForm = () =>{
             placeholder="Login"
             placeholderTextColor="#dcdcdc"
             textContentType="emailAddress"
-            keyboardType = "email-address"
+            // keyboardType = "email-address"
             onFocus={()=>setIsFocused("login")}
             onChangeText={(login) => setLogin(login)}
             // onBlur={()=>setIsFocused("")}
@@ -85,7 +85,7 @@ const submitForm = () =>{
             placeholder="Enter your email"
             placeholderTextColor="#dcdcdc"
             textContentType="emailAddress"
-            keyboardType = "email-address"
+            // keyboardType = "email-address"
             onFocus={()=>setIsFocused("email")}
             onChangeText={(email) => setEmail(email)}
             // onBlur={()=>setIsFocused("")}
@@ -99,7 +99,7 @@ const submitForm = () =>{
             cursorColor="#dcdcdc"
             selectionColor="#dcdcdc"
             placeholder="Enter your password"
-            keyboardType = "email-address"
+            // keyboardType = "email-address"
             placeholderTextColor="#dcdcdc"
             secureTextEntry={!passwordShown}
             onChangeText={(password) => setPassword(password)}
@@ -118,10 +118,12 @@ const submitForm = () =>{
       </ButtonSubmit>
         </Form>
 
+
         <LinkToREgister onPress={onRegister}>
-          <RegisterTExt>Have an account? Login</RegisterTExt>
+          <RegisterTExt>Don't have account yet? Register</RegisterTExt>
         </LinkToREgister>
-      </ContentREgister>
+        </ContentREgister>
+        </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 };
