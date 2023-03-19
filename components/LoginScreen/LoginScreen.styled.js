@@ -48,7 +48,7 @@ export const Form = styled.View`
 
 export const Input = styled.TextInput`
     font-family: 'Mont-Daily';
-    color: "black";
+    color: black;
     font-size: 16px;
     width: 100%;
     padding: 16px 15px;
