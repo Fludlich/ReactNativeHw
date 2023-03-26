@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { Camera } from "expo-camera"
 
 export const PhotoBgc = styled.View`
     width: 100%;
@@ -10,6 +11,22 @@ export const PhotoBgc = styled.View`
     justify-content: center;
     align-items: center;
 `
+export const PhotoBgc1 = styled(Camera)`
+    width: 100%;
+    background-color: #F6F6F6;
+    height: 240px;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    justify-content: center;
+    align-items: center;
+`
+export const Prevue = styled.Image`
+    width: 100%;
+    height: 100%;
+    object-fit:scale-down;
+`
+
 export const ChoocePhotoBtn = styled.Pressable`
     background-color: white;
     width: 60px;
@@ -43,20 +60,20 @@ export const Input = styled.TextInput`
     font-size: 16px;
     color: #BDBDBD;
     width: 100%;
-    border-bottom: 1px solid #E8E8E8;
+    /* border-bottom: 1px solid #E8E8E8; */
     padding: 15px 0;
     border: 1px solid transparent;
-    border-bottom-color: #E8E8E8;
+    /* border-bottom-color: #E8E8E8; */
 `
 export const InputLocation = styled.TextInput`
     font-family: Mont-Daily;
     font-size: 16px;
     color: #BDBDBD;
     width: 100%;
-    border-bottom: 1px solid #E8E8E8;
+    /* border-bottom: 1px solid #E8E8E8; */
     padding: 15px 0 15px 26px;
     border: 1px solid transparent;
-    border-bottom-color: #E8E8E8;
+    /* border-bottom-color: #E8E8E8; */
 `
 export const BtnSubmit = styled.Pressable`
     background-color: #F6F6F6;

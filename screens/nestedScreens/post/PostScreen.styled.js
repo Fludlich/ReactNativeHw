@@ -20,6 +20,7 @@ export const UserBox = styled.View`
 export const Post = styled.View`
     width: 100%;
     gap: 8px;
+    margin-bottom: 32px;
 `
 
 export const Img = styled.Image`
@@ -52,7 +53,7 @@ export const InfoBox = styled.View`
 export const FlexBox = styled.Pressable`
     margin-top: 2px;
     flex-direction: row;
-    gap: 8px;
+    gap: ${(p)=>p.unique ? 27 : 8};
     justify-content: center;
     align-items: center;
 `

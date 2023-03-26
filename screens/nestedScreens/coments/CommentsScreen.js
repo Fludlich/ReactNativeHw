@@ -2,17 +2,13 @@ import React, { useState } from "react";
 
 import { Ionicons } from '@expo/vector-icons';
 import { 
-    View, 
-    Image,
-    Text,
     Keyboard,
     TouchableWithoutFeedback, 
     KeyboardAvoidingView, 
-    Platform,
-    Pressable
+    Platform
    } from "react-native";
 
-import { Container } from "../main.styled";
+import { Container } from "../../main/main.styled";
 import {
   CommentsBox,
   ChatBox,

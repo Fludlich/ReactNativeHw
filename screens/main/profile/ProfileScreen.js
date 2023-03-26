@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Background } from "../../auth/Auth.styled";
 import { ContentRegister, RegTitle } from "../../auth/RegistrationScreen/RegistrationScreen.styed";
-import { Post, PostImg, DescriptionText, InfoBox, FlexBox, CommentText, LocationText, PostBox } from "../post/PostScreen.styled";
+import { Post, PostImg, DescriptionText, InfoBox, FlexBox, CommentText, LocationText, PostBox } from "../../nestedScreens/post/PostScreen.styled";
 import { AvatarBox, Avatar, BtnHandlerAvatar, PreAvatarBox, Logout } from "./ProfileScreen.styled";
 
 import { Ionicons } from '@expo/vector-icons';
@@ -10,7 +10,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Image, Pressable } from "react-native";
+import { View } from "react-native";
 
 const image = require("../../../assets/images/photo.jpg");
 
@@ -81,7 +81,7 @@ const ProfileScreen = () => {
                         <Avatar source={image}/>
                         <BtnHandlerAvatar onPress={avatarHandler}>
                             {/* <Entypo name="plus" size={24} color="#E8E8E8" /> */}
-                            <MaterialCommunityIcons name="plus" size={24} color="#E8E8E8" style={{transform: "rotate(45deg)"}} />
+                            <MaterialCommunityIcons name="plus" size={24} color="#E8E8E8" style={{transform: [{rotate: "45deg"}]}} />
                         </BtnHandlerAvatar>
                     </AvatarBox>
                 </PreAvatarBox>
@@ -90,17 +90,19 @@ const ProfileScreen = () => {
                     {user.posts.map(el=>{
                         const {photo, description, comments, location, likes} = el
                         return(
-                            <Post>
+                            <Post key={likes.toString()}>
                             <PostImg source={photo}/>
                             <DescriptionText>{description}</DescriptionText>
                             <InfoBox>
-                                <FlexBox onPress={commentHandler}>
-                                <FontAwesome5 name="comment" size={18} color="#BDBDBD" style={{marginLeft: 3, transform: "scaleX(-1)"}}/>
-                                    <CommentText>{comments}</CommentText>
+                                <FlexBox unique={true}>
+                                    <FlexBox onPress={commentHandler}>
+                                    <FontAwesome5 name="comment" size={18} color="#BDBDBD" style={{marginLeft: 3, transform: [{scaleX:-1}]}}/>
+                                        <CommentText>{comments}</CommentText>
+                                    </FlexBox>
+                                    <FlexBox onPress={likeHandler}>
+                                    <AntDesign name="like2" size={18} color="#BDBDBD" />
+                                        <CommentText>{likes}</CommentText>
                                 </FlexBox>
-                                <FlexBox onPress={likeHandler}>
-                                <AntDesign name="like2" size={18} color="#BDBDBD" />
-                                    <CommentText>{likes}</CommentText>
                                 </FlexBox>
                                 <FlexBox onPress={handleLocation}>
                                     <Ionicons name="location-outline" size={16} color="black" />
