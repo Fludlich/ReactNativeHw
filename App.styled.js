@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-import { Box } from './components/LoginScreen/LoginScreen.styled';
+import { Box } from './screens/auth/LoginScreen/LoginScreen.styled';
 
 export const MainBox = styled(Box)`
     justify-content: center;
